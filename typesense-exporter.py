@@ -22,7 +22,7 @@ def fetchEndpoints(ep):
   generated = dict()
   for endpoint, config in ep.items():
     h = {'X-TYPESENSE-API-KEY': typesense_apikey}
-    r = requests.get( typesense_scheme + "://" + typesense_host + ":" + typesense_port + "/" + config["url"], headers=h, timeout=2 )
+    r = requests.get( typesense_scheme + "://" + typesense_host + ":" + str(typesense_port) + "/" + config["url"], headers=h, timeout=2 )
     generated[endpoint] = json.loads(r.text)
   return generated
 
